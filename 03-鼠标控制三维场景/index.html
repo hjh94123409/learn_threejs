@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/reset.css">
     <script src="../libs/three.min.js"></script>
+    <script src="../libs/OrbitControls.js"></script>
 </head>
 <body>
     <div id="webgl-output"></div>
@@ -71,12 +72,14 @@
         sphere.castShadow = true
         scene.add(sphere)
 
-
         //创建聚光灯
         const spotLight = new THREE.SpotLight(0xffffff)
         spotLight.position.set(30, 30, -30)
         spotLight.castShadow = true
-
+        spotLight.angle = Math.PI / 5
+        spotLight.shadow.penumbra = 0.05
+        spotLight.shadow.mapSize.width = 1024;
+        spotLight.shadow.mapSize.height = 1024;
         //添加聚光灯
         scene.add(spotLight)
 
@@ -89,10 +92,14 @@
 
         renderer.render(scene, camera)
 
+        //创建控制器对象
+        const controls = new THREE.OrbitControls(camera, renderer.domElement)
 
+        //监听鼠标事件
+        controls.addEventListener('change', () => {
+            renderer.render(scene, camera)
+        })
         
-
-
 
     </script>
 </body>

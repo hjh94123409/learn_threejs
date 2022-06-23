@@ -89,10 +89,16 @@
 
         renderer.render(scene, camera)
 
-
-        
-
-
+        let T0 = new Date()
+        function render(){
+            let T1 = new Date()
+            let t = T1 - T0
+            T0 = T1
+            renderer.render(scene, camera)
+            cube.rotateY(0.001 * t)
+            requestAnimationFrame(render)
+        }
+        render()
 
     </script>
 </body>
