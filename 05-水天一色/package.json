@@ -1,0 +1,11 @@
+{
+  "name": "three.js",
+  "version": "1.0.0",
+  "description": "水天一色",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.141.0"
+  },
+  "devDependencies": {}
+}
